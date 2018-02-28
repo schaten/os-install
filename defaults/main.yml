@@ -1,4 +1,5 @@
 zerombr: False
 mod_grub: True
+message: 'System will reboot in 60 secs. Save your work.'
 xmessage: "xmess.sh"
 boot_dir: boot/
