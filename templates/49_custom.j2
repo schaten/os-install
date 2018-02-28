@@ -4,7 +4,7 @@ exec tail -n +3 $0
 # menu entries you want to add after this comment.  Be careful not to change
 # the 'exec tail' line above.
 menuentry 'reinstall' {
-	set root='hd0,msdos{{part_no}}'
+	set root='hd0,msdos{{part_no.stdout}}'
 	linux /vmlinuz-install {% for item in kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
        
 	initrd /initrd-install

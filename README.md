@@ -2,6 +2,8 @@
 This role triggers a reinstallation of the operating system.
 
 Currently, only MBR-systems are supported (..). First, kernel and initrd are copied to the remote host, then the grub.cfg is edited to start the installation on reboot.
+
+--- this can (obviously) break your system. ---
  
 # Usage:
 First, create a directory holding the playbook (example see below) you're going to use to trigger a reinstallation and enter it.
@@ -26,4 +28,5 @@ Then, execute the following:
       - name: inst.repo
         value: "http://ftp.gwdg.de/pub/linux/fedora/linux/releases/27/Everything/x86_64/os"
       - name: inst.text 
-  roles: [{'role': os-install}]```
+  roles: [{'role': os-install}]
+```
