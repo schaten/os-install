@@ -15,7 +15,7 @@ You will need a kickstart- (fedora)/preseed- /... file to automate your installa
 
 Then, execute the following:
 ## Example playbook:
-- name: Install new os
+```- name: Install new os
   hosts: {{target}}
   vars:
     - kparams:
@@ -26,4 +26,4 @@ Then, execute the following:
       - name: inst.repo
         value: "http://ftp.gwdg.de/pub/linux/fedora/linux/releases/27/Everything/x86_64/os"
       - name: inst.text 
-  roles: [{'role': os-install}]
+  roles: [{'role': os-install}]```
