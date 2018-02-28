@@ -1,6 +1,6 @@
 - shell: "dd if=/dev/zero of=/dev/sda bs=446 count=1"
   when: zerombr is defined and zerombr
-- include_tasks: install_methods/grub-mbr.yml
+- include_tasks: grub-mbr.yml
   when: mod_grub is defined and mod_grub
 - shell: "shutdown -r +1 'System will reboot in 60 secs. Save your work.'"
 - shell: "({{xmessage}} \"{{ message }}\" >/dev/null 2>&1 &)"
