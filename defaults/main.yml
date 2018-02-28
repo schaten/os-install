@@ -1,0 +1,4 @@
+zerombr: False
+mod_grub: True
+xmessage: "xmess.sh"
+boot_dir: boot/
