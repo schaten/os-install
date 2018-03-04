@@ -7,14 +7,13 @@ Currently, only MBR-systems are supported (..). First, kernel and initrd are cop
  
 # Usage:
 First, create a directory holding the playbook (example see below) you're going to use to trigger a reinstallation and enter it.
-Then get the files neccessary for installation:
+Then get the files neccessary for installation, e.g.:
 ```mkdir boot
 repo="http://ftp.gwdg.de/pub/linux/fedora/linux/releases/27/Server/x86_64/os"
 wget $repo/images/pxeboot/vmlinuz -O boot/vmlinuz-install
 wget $repo/images/pxeboot/initrd.img -O boot/initrd-install
 ```
-You will need a kickstart- (fedora)/preseed- /... file to automate your installation. Currently this needs to be available on a webserver (see inst.ks - value ).
-
+You will need a kickstart- (fedora)/preseed- /... file to automate your installation. It should be possible to include it in the boot-directory somehow. 
 Then, execute the following:
 ## Example playbook:
 ```- name: Install new os

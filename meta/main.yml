@@ -1,0 +1,5 @@
+galaxy_info:
+  author: Philip
+  description: Modify grub to boot to a new linux installation iso
+  platforms:
+    - Linux
