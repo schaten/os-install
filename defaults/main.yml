@@ -2,5 +2,5 @@ zerombr: False
 mod_grub: True
 message: 'System will reboot in 60 secs. Save your work.'
 xmessage: "xmess.sh"
-gitlab-runner: 'localhost'
+build_server: 'localhost'
 boot_dir: boot/
