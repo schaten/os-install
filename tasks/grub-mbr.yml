@@ -2,6 +2,7 @@
 - synchronize:
     src: "{{boot_dir}}"
     dest: /boot
+    set_remote_user: no
   delegate_to: "{{build_server}}"
 # hacky:
 - shell: "tmp=$(mount -l | grep boot | cut -d' ' -f 1); echo \"${tmp: -1}\""
