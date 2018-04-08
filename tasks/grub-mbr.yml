@@ -2,6 +2,7 @@
 - synchronize:
     src: "{{boot_dir}}"
     dest: /boot
+  delegate_to: "{{gitlab-runner}}"
 # hacky:
 - shell: "tmp=$(mount -l | grep boot | cut -d' ' -f 1); echo \"${tmp: -1}\""
   register: part_no
