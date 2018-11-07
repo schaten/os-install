@@ -5,7 +5,7 @@
     set_remote_user: no
   delegate_to: "{{build_server}}"
 # hacky:
-- shell: "tmp=$(mount -l | grep boot | cut -d' ' -f 1); echo \"${tmp: -1}\""
+- shell: "tmp=$(mount -l | grep boot | grep -v efi | cut -d' ' -f 1); echo \"${tmp: -1}\""
   register: part_no
 - template:
     src: 49_custom.j2
@@ -16,4 +16,4 @@
     line: "GRUB_DEFAULT=reinstall"
     path: "/etc/default/grub"
     state: present
-- shell: "grub2-mkconfig > /boot/grub2/grub.cfg"
+- shell: "grub2-mkconfig > /boot/efi/EFI/fedora/grub.cfg"
