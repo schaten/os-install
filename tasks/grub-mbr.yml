@@ -7,6 +7,8 @@
 # hacky:
 - shell: "tmp=$(mount -l | grep boot | grep -v efi | cut -d' ' -f 1); echo \"${tmp: -1}\""
   register: part_no
+- shell: "tmp=$(blkid | grep /dev/sda{{part_no.stdout}} | cut -d'=' -f 2 | cut -d' ' -f1); echo $tmp"
+  register: uuid
 - template:
     src: 49_custom.j2
     dest: /etc/grub.d/49_custom
