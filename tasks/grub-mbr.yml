@@ -19,3 +19,7 @@
     path: "/etc/default/grub"
     state: present
 - shell: "grub2-mkconfig > /boot/efi/EFI/fedora/grub.cfg"
+  when: efi is defined and efi==1
+- shell: "grub2-mkconfig > /boot/grub2/grub.cfg"
+  when: efi is undefined or efi!=1
+

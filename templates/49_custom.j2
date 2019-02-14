@@ -4,13 +4,33 @@ exec tail -n +3 $0
 # menu entries you want to add after this comment.  Be careful not to change
 # the 'exec tail' line above.
 menuentry 'reinstall' --unrestricted {
-	set root='hd0,gpt{{part_no.stdout}}'
+	{% if efi is defined and efi == 1%}
+
+	  set root='hd0,gpt{{part_no.stdout}}'
+        {% else %}
+
+	  set root='hd0,msdos{{part_no.stdout}}'
+        {% endif %}
+
 	if [ x$feature_platform_search_hint = xy ]; then
           search --no-floppy --fs-uuid --set=root --hint-bios=hd0,gpt{{part_no.stdout}} --hint-efi=hd0,gpt{{part_no.stdout}} --hint-baremetal=ahci0,gpt{{part_no.stdout}} {{uuid.stdout}}
         else
           search --no-floppy --fs-uuid --set=root {{uuid.stdout}}
         fi
-	linuxefi /vmlinuz-install {% for item in kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
-       
-	initrdefi /initrd-install
+
+	{% if efi is defined and efi == 1%}
+
+	  linuxefi /vmlinuz-install {% for item in kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
+
+       	  initrdefi /initrd-install
+
+        {% else %}
+
+	  linux16 /vmlinuz-install {% for item in kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
+
+       	  initrd16 /initrd-install
+
+        {% endif %}
+
+          
 }
