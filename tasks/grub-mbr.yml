@@ -5,7 +5,9 @@
     set_remote_user: no
   delegate_to: "{{build_server}}"
 # hacky:
-- shell: "tmp=$(mount -l | grep boot | grep -v efi | cut -d' ' -f 1); echo \"${tmp: -1}\""
+#- shell: "tmp=$(mount -l | grep boot | grep -v efi | cut -d' ' -f 1); echo \"${tmp: -1}\""
+# New Version that is partition independant
+- shell: "tmp=$(df /boot | cut -d' ' -f 1 | tail -n 1); echo \"${tmp: -1}\""
   register: part_no
 - shell: "tmp=$(blkid | grep /dev/sda{{part_no.stdout}} | cut -d'=' -f 2 | cut -d' ' -f1); echo $tmp"
   register: uuid
