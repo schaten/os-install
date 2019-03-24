@@ -26,9 +26,9 @@ menuentry 'reinstall' --unrestricted {
 
         {% else %}
 
-	  linux16 /vmlinuz-install {% for item in kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
+	  linux /boot/vmlinuz-install {% for item in kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
 
-       	  initrd16 /initrd-install
+       	  initrd /boot/initrd-install
 
         {% endif %}
 
