@@ -22,13 +22,13 @@ menuentry 'reinstall' --unrestricted {
 
 	  linuxefi /os/{{default_os}}/vmlinuz {% for item in os_available[default_os].kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
 
-       	  initrdefi /os/{{default_os}}/initrd
+       	  initrdefi /os/{{default_os}}/initrd.img
 
         {% else %}
 
 	  linux /boot/os/{{default_os}}/vmlinuz {% for item in os_available[default_os].kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
 
-       	  initrd /boot/os/{{default_os}}/initrd
+       	  initrd /boot/os/{{default_os}}/initrd.img
 
         {% endif %}
 
