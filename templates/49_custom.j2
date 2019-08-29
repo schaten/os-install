@@ -20,15 +20,15 @@ menuentry 'reinstall' --unrestricted {
 
 	{% if efi is defined and efi == 1%}
 
-	  linuxefi /vmlinuz-install {% for item in kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
+	  linuxefi /os/{{default_os}}/vmlinuz {% for item in os_available[default_os].kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
 
-       	  initrdefi /initrd-install
+       	  initrdefi /os/{{default_os}}/initrd
 
         {% else %}
 
-	  linux /boot/vmlinuz-install {% for item in kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
+	  linux /boot/os/{{default_os}}/vmlinuz {% for item in os_available[default_os].kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
 
-       	  initrd /boot/initrd-install
+       	  initrd /boot/os/{{default_os}}/initrd
 
         {% endif %}
 

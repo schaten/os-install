@@ -1,6 +1,6 @@
 --- # Initiate OS Reinstallation by copying kernel and initrd and modifying grub.cfg
 - synchronize:
-    src: "{{boot_dir}}"
+    src: "{{build_dir}}"
     dest: /boot
     set_remote_user: no
   delegate_to: "{{build_server}}"

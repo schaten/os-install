@@ -3,6 +3,6 @@
 - include_tasks: grub-mbr.yml
   when: mod_grub is defined and mod_grub
 - shell: "shutdown -r +1 'System will reboot in 60 secs. Save your work.'"
-- shell: "({{xmessage}} \"{{ message }}\" >/dev/null 2>&1 &)"
+- shell: "({{xmessage}} \"{{ reinstallmessage }}\" >/dev/null 2>&1 &)"
   async: 2
   poll: 0
