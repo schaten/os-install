@@ -26,9 +26,9 @@ menuentry 'reinstall' --unrestricted {
 
         {% else %}
 
-	  linux /boot/os/{{default_os}}/vmlinuz {% for item in os_available[default_os].kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
+	  linux /os/{{default_os}}/vmlinuz {% for item in os_available[default_os].kparams %} {{ item.name }}{% if item.value is defined %}={{ item.value }}{% endif %}{% endfor %}
 
-       	  initrd /boot/os/{{default_os}}/initrd.img
+       	  initrd /os/{{default_os}}/initrd.img
 
         {% endif %}
 
